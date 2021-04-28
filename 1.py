@@ -1,1 +1,1 @@
-
+input("nome?")
