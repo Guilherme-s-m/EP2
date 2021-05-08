@@ -37,6 +37,6 @@ def lista_movimentos_possiveis(s,p):
 
 #Função empilha
 def empilha(s,y,z):
-    s[z] = m[y]
+    s[z] = s[y]
     del(s[y])
     return s
