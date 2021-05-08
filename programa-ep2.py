@@ -21,8 +21,6 @@ def extrai_valor(x):
     return x
 #Função empilha
 def empilha(x,y,z):
-    x.remove(x[z]) 
-    x.insert(x[z],x[y])
-    x.remove(x[y])
+    x[z] = x[y]
+    del(x[y])
     return x
-print(empilha(['6♥', 'J♥', '9♣', '9♥'],1,0))
