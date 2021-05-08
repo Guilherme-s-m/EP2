@@ -35,22 +35,6 @@ def lista_movimentos_possiveis(s,p):
         lista_mov.append(3)
     return lista_mov
 
-#Função lista de movimentos possíveis
-def lista_movimentos_possiveis(s,p):
-    lista_mov= []
-    if p == 0:
-        return []
-    if extrai_naipe(s[p]) == extrai_naipe(s[p-1]):
-        lista_mov.append(1)
-    elif extrai_valor (s[p]) == extrai_valor(s[p-1]):
-        lista_mov.append(1)
-    if extrai_naipe(s[p]) == extrai_naipe(s[p-3]) and (p-3) >=0:
-        lista_mov.append(3)
-    elif extrai_valor(s[p]) == extrai_valor(s[p-3]) and (p-3)>=0:
-        lista_mov.append(3)
-    return lista_mov
-
-
 #Função empilha
 def empilha(m,y,z):
     m[z] = m[y]
