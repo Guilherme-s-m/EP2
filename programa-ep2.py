@@ -15,7 +15,14 @@ def cria_baralho():
 def extrai_naipe(x):
     y = x[-1]
     return y
-#Função estrai valor da carta
+#Função extrai valor da carta
 def extrai_valor(x):
     x = x[:-1] + ""
     return x
+#Função empilha
+def empilha(x,y,z):
+    x.remove(x[z]) 
+    x.insert(x[z],x[y])
+    x.remove(x[y])
+    return x
+print(empilha(['6♥', 'J♥', '9♣', '9♥'],1,0))
