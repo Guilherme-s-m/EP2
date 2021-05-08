@@ -8,4 +8,4 @@ def cria_baralho():
             baralho.append(c+n)
     return baralho
 
-print (cria_baralho())       
+   
