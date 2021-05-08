@@ -9,11 +9,13 @@ def cria_baralho():
         for c in carta:
             baralho.append(c+n)
     return baralho
-print(cria_baralho())
-print()
+#print(cria_baralho())
 
 #Função extrai naipe
 def extrai_naipe(x):
     y = x[-1]
     return y
-
+#Função estrai valor da carta
+def extrai_valor(x):
+    x = x[:-1] + ""
+    return x
