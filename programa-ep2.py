@@ -52,6 +52,16 @@ print('Paciência Acordeão\n ============\n\n Seja bem-vindo(a) ao jogo de Paci
 print('Existem apenas dois movimentos possíveis:\n\n 1. Empilhar uma carta sobre a carta imadiatamente anterior;\n 2. Empilhar uma carta sobre a terceira carta anterior.\n')
 print('Para que o movimento possa ser realizado basta que uma das duas condições abaixo seja atendida:\n')
 print('1. As duas cartas possuem o mesmo valor ou\n2. as duas cartas possuem o mesmo naipe.\n')
-print('Desde que alguma das condições acima seja satisfeita, qualquer carta pode ser movimentada.\n\nAperte [Enter] para iniciar o jogo... ')
-
-
+print('Desde que alguma das condições acima seja satisfeita, qualquer carta pode ser movimentada.\n')
+#Aperte [Enter]
+start = True
+while start:
+    comeca = input("Aperte [Enter] para iniciar o jogo...")
+    if comeca == (""):
+        start = False
+#Atalho de funções
+baralho = cria_baralho()
+naipe = extrai_naipe()
+valor = extrai_valor()
+movimentos = lista_movimentos_possiveis()
+possui_movimentos = possui_movimentos_possiveis()
