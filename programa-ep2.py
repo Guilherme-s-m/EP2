@@ -1,5 +1,6 @@
 #importar biblioteca de sortear
 import random
+from colorama import Fore, Back, Style
 #Função cria baralho
 def cria_baralho():
     carta= ["A","2","3","4","5","6","7","8","9","10","J","Q","K"]
@@ -11,11 +12,11 @@ def cria_baralho():
     return baralho
 #Função extrai naipe
 def extrai_naipe(x):
-    y = x[-1]
+    y= x[-1]
     return y
 #Função extrai valor da carta
 def extrai_valor(v):
-    v = v[:-1] + ""
+    v= v[:-1] + ""
     return v
 #Função lista de movimentos possíveis
 def lista_movimentos_possiveis(s,p):
@@ -33,18 +34,18 @@ def lista_movimentos_possiveis(s,p):
     return lista_mov
 #Função empilha
 def empilha(s,y,z):
-    s[z] = s[y]
+    s[z]= s[y]
     del(s[y])
     return s
 #Função possui movimentos possiveis
 def possui_movimentos_possiveis(s):
-    i = 0
+    i= 0
     while i < len(s):
-        mov_poss = lista_movimentos_possiveis(s, i)
-        if mov_poss != []:
+        mov_poss= lista_movimentos_possiveis(s, i)
+        if mov_poss!= []:
             return True
         else:
-            i += 1
+            i= i+1
     return False
 
 #Intruções do jogo:
@@ -53,15 +54,33 @@ print('Existem apenas dois movimentos possíveis:\n\n 1. Empilhar uma carta sobr
 print('Para que o movimento possa ser realizado basta que uma das duas condições abaixo seja atendida:\n')
 print('1. As duas cartas possuem o mesmo valor ou\n2. as duas cartas possuem o mesmo naipe.\n')
 print('Desde que alguma das condições acima seja satisfeita, qualquer carta pode ser movimentada.\n')
-#Aperte [Enter]
-start = True
+#Aperte [Enter] / Gerar cartas e numero
+start= True
 while start:
-    comeca = input("Aperte [Enter] para iniciar o jogo...")
+    comeca= input("Aperte [Enter] para iniciar o jogo...")
     if comeca == (""):
-        start = False
-#Atalho de funções
-baralho = cria_baralho()
-naipe = extrai_naipe()
-valor = extrai_valor()
-movimentos = lista_movimentos_possiveis()
-possui_movimentos = possui_movimentos_possiveis()
+        baralho= cria_baralho()
+        possui_movimentos= possui_movimentos_possiveis(baralho)
+        while possui_movimentos:
+            c_baralho= 0
+            num= 1
+            while c_baralho < len(baralho):
+                naipe= extrai_naipe(baralho[c_baralho])
+                if naipe == "♠":
+                    print(Fore.CYAN + '{0}.  {1}'.format(num, baralho[c_baralho]))         #{0}: Numero da carta // {1}: Valor e estilo da carta
+                if naipe == "♥":
+                    print(Fore.RED + '{0}.  {1}'.format(num, baralho[c_baralho]))
+                if naipe == "♦":
+                    print(Fore.MAGENTA + '{0}.  {1}'.format(num, baralho[c_baralho]))
+                if naipe == "♣":
+                    print(Fore.GREEN + '{0}.  {1}'.format(num, baralho[c_baralho]))
+                num = num+1 
+                c_baralho = c_baralho+1
+            """w= True"""
+            break
+
+     
+        
+
+   
+       
