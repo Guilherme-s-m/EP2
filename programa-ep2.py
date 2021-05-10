@@ -9,6 +9,7 @@ def cria_baralho():
     for n in naipe:
         for c in carta:
             baralho.append(c+n)
+    random.shuffle(baralho)
     return baralho
 #Função extrai naipe
 def extrai_naipe(x):
