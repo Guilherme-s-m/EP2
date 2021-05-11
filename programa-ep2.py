@@ -24,14 +24,17 @@ def lista_movimentos_possiveis(s,p):
     lista_mov= []
     if p == 0:
         return []
-    if extrai_naipe(s[p]) == extrai_naipe(s[p-1]):
-        lista_mov.append(1)
-    elif extrai_valor (s[p]) == extrai_valor(s[p-1]):
-        lista_mov.append(1)
-    if extrai_naipe(s[p]) == extrai_naipe(s[p-3]) and (p-3) >=0:
-        lista_mov.append(3)
-    elif extrai_valor(s[p]) == extrai_valor(s[p-3]) and (p-3)>=0:
-        lista_mov.append(3)
+    if p > len(s):
+        return []
+    else:
+        if extrai_naipe(s[p]) == extrai_naipe(s[p-1]):
+            lista_mov.append(1)
+        elif extrai_valor (s[p]) == extrai_valor(s[p-1]):
+            lista_mov.append(1)
+        if extrai_naipe(s[p]) == extrai_naipe(s[p-3]) and (p-3) >=0:
+            lista_mov.append(3)
+        elif extrai_valor(s[p]) == extrai_valor(s[p-3]) and (p-3)>=0:
+            lista_mov.append(3)
     return lista_mov
 #Função empilha
 def empilha(s,y,z):
@@ -77,8 +80,62 @@ while start:
                     print(Fore.GREEN + '{0}.  {1}'.format(num, baralho[c_baralho]))
                 num = num+1 
                 c_baralho = c_baralho+1
-            """w= True"""
-            break
+            while True:
+                p=  int(input(Fore.WHITE + "Escolha uma carta (digite um número entre 1 e {}):  ".format(num-1)))
+                if p >52 or p>=num:
+                    print("Posição inválida. Por favor, digite um número entre 1 e {}:  ".format(num-1))
+                break
+            possiveis_movimentos = lista_movimentos_possiveis(baralho, p-1)
+            if p > len(baralho):
+                print("")
+            else:
+                if possiveis_movimentos == []:
+                    print ("A carta {0} não pode ser movida. Por favor, digite um número entre 1 e {1}:  ".format(baralho[p-1],num-1))
+            if possiveis_movimentos == [1]:
+                empilha(baralho, p-1, p-2)
+            if possiveis_movimentos == [3]:
+                empilha(baralho,p-1, p-4)
+            if possiveis_movimentos == [1, 3]:
+                while True:
+                    print('Sobre qual carta você quer empilhar o {0}?'.format(baralho[p-1]))
+                    naipe_p2=extrai_naipe(baralho[p-2])
+                    naipe_p4=extrai_naipe(baralho[p-4])
+                    if naipe_p2 == "♠":
+                        print(Fore.CYAN + "1.  {0}".format(baralho[p-2]))
+                    if naipe_p2 == "♥":
+                        print(Fore.RED + "1.  {0}".format(baralho[p-2]))
+                    if naipe_p2 == "♦":
+                        print(Fore.MAGENTA + "1.  {0}".format(baralho[p-2]))
+                    if naipe_p2 == "♣":
+                        print(Fore.GREEN + "1.  {0}".format(baralho[p-2]))
+                    if naipe_p4 == "♠":
+                        print(Fore.CYAN + "2.  {0}".format(baralho[p-4]))
+                    if naipe_p4 == "♥":
+                        print(Fore.RED + "2.  {0}".format(baralho[p-4]))
+                    if naipe_p4 == "♦":
+                        print(Fore.MAGENTA + "2.  {0}".format(baralho[p-4]))
+                    if naipe_p4 == "♣":
+                        print(Fore.GREEN + "2.  {0}".format(baralho[p-4]))
+                    posicao_empilha = int(input(Fore.WHITE+'Digite o número de sua escolha(1-2):  '))
+                    if posicao_empilha == 1:
+                        empilha(baralho, p-1, p-2)
+                        break
+                    if posicao_empilha == 2:
+                        empilha(baralho, p-1, p-4)
+                        break
+                    else:
+                        print('Posição inválida, digite um número entre 1 e 2:')
+                    break
+        existe_movimentos = possui_movimentos_possiveis(baralho)
+if len(baralho) >1:
+    print(Fore.RED + "Você Perdeu :(")
+else:
+    print(Fore.GREEN + "Parabéns! Você ganhou.")
+estado_final=input(Fore.WHITE + "Você quer jogar novamente (digite s ou n)? ")
+if estado_final == "s":
+    start= True
+if estado_final == "n":
+    start= False
 
      
         
