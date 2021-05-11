@@ -65,11 +65,11 @@ while start:
     if comeca == (""):
         baralho= cria_baralho()
         possui_movimentos= possui_movimentos_possiveis(baralho)
-        naipe= extrai_naipe(baralho[c_baralho])
         while possui_movimentos:
             c_baralho= 0
             num= 1
             while c_baralho < len(baralho):
+                naipe= extrai_naipe(baralho[c_baralho])
                 if naipe == "♠":
                     print(Fore.CYAN + '{0}.  {1}'.format(num, baralho[c_baralho]))         #{0}: Numero da carta // {1}: Valor e estilo da carta
                 if naipe == "♥":
@@ -136,9 +136,3 @@ if estado_final == "s":
     start= True
 if estado_final == "n":
     start= False
-
-     
-        
-
-   
-       
