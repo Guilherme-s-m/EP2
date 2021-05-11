@@ -65,11 +65,11 @@ while start:
     if comeca == (""):
         baralho= cria_baralho()
         possui_movimentos= possui_movimentos_possiveis(baralho)
+        naipe= extrai_naipe(baralho[c_baralho])
         while possui_movimentos:
             c_baralho= 0
             num= 1
             while c_baralho < len(baralho):
-                naipe= extrai_naipe(baralho[c_baralho])
                 if naipe == "♠":
                     print(Fore.CYAN + '{0}.  {1}'.format(num, baralho[c_baralho]))         #{0}: Numero da carta // {1}: Valor e estilo da carta
                 if naipe == "♥":
@@ -116,7 +116,7 @@ while start:
                         print(Fore.MAGENTA + "2.  {0}".format(baralho[p-4]))
                     if naipe_p4 == "♣":
                         print(Fore.GREEN + "2.  {0}".format(baralho[p-4]))
-                    posicao_empilha = int(input(Fore.WHITE+'Digite o número de sua escolha(1-2):  '))
+                    posicao_empilha = int(input('Digite o número de sua escolha(1-2): '))
                     if posicao_empilha == 1:
                         empilha(baralho, p-1, p-2)
                         break
@@ -124,14 +124,14 @@ while start:
                         empilha(baralho, p-1, p-4)
                         break
                     else:
-                        print('Posição inválida, digite um número entre 1 e 2:')
+                        print('Posição inválida, digite um número entre 1 e 2: ')
                     break
-        existe_movimentos = possui_movimentos_possiveis(baralho)
+        possui_movimentos = possui_movimentos_possiveis(baralho)
 if len(baralho) >1:
-    print(Fore.RED + "Você Perdeu :(")
+    print("Você Perdeu :(")
 else:
-    print(Fore.GREEN + "Parabéns! Você ganhou.")
-estado_final=input(Fore.WHITE + "Você quer jogar novamente (digite s ou n)? ")
+    print("Parabéns! Você ganhou.")
+estado_final=input("Você quer jogar novamente (digite s ou n)? ")
 if estado_final == "s":
     start= True
 if estado_final == "n":
