@@ -78,14 +78,14 @@ while start:
                     print(Fore.MAGENTA + '{0}.  {1}'.format(num, baralho[c_baralho]))
                 if naipe == "♣":
                     print(Fore.GREEN + '{0}.  {1}'.format(num, baralho[c_baralho]))
-                num = num+1 
-                c_baralho = c_baralho+1
+                num= num+1 
+                c_baralho= c_baralho+1
             while True:
                 p=  int(input(Fore.WHITE + "Escolha uma carta (digite um número entre 1 e {}):  ".format(num-1)))
                 if p >52 or p>=num:
                     print("Posição inválida. Por favor, digite um número entre 1 e {}:  ".format(num-1))
                 break
-            possiveis_movimentos = lista_movimentos_possiveis(baralho, p-1)
+            possiveis_movimentos= lista_movimentos_possiveis(baralho, p-1)
             if p > len(baralho):
                 print("")
             else:
@@ -116,7 +116,7 @@ while start:
                         print(Fore.MAGENTA + "2.  {0}".format(baralho[p-4]))
                     if naipe_p4 == "♣":
                         print(Fore.GREEN + "2.  {0}".format(baralho[p-4]))
-                    posicao_empilha = int(input('Digite o número de sua escolha(1-2): '))
+                    posicao_empilha= int(input('Digite o número de sua escolha(1-2): '))
                     if posicao_empilha == 1:
                         empilha(baralho, p-1, p-2)
                         break
@@ -126,8 +126,8 @@ while start:
                     else:
                         print('Posição inválida, digite um número entre 1 e 2: ')
                     break
-        possui_movimentos = possui_movimentos_possiveis(baralho)
-if len(baralho) >1:
+        possui_movimentos= possui_movimentos_possiveis(baralho)
+if len(baralho) > 1:
     print("Você Perdeu :(")
 else:
     print("Parabéns! Você ganhou.")
